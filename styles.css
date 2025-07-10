@@ -6,3 +6,233 @@
   box-sizing: border-box;
   font-family: 'Rajdhani', sans-serif;
 }
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.shadow-fight-bg {
+  background: radial-gradient(ellipse at center, #0a0a0a 0%, #000000 70%, #000000 100%);
+  position: relative;
+  min-height: 100vh;
+}
+
+.shadow-fight-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 0, 100, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255, 255, 0, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.neon-red {
+  color: #ff0066;
+  text-shadow: 
+    0 0 3px rgba(255, 0, 102, 0.6),
+    0 0 6px rgba(255, 0, 102, 0.4),
+    0 0 10px rgba(255, 0, 102, 0.2);
+}
+
+.neon-cyan {
+  color: #00ffff;
+  text-shadow: 
+    0 0 3px rgba(0, 255, 255, 0.6),
+    0 0 6px rgba(0, 255, 255, 0.4),
+    0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+.neon-yellow {
+  color: #ffff00;
+  text-shadow: 
+    0 0 3px rgba(255, 255, 0, 0.6),
+    0 0 6px rgba(255, 255, 0, 0.4),
+    0 0 10px rgba(255, 255, 0, 0.2);
+}
+
+.text-purple-400 {
+  color: #c084fc;
+  text-shadow: 
+    0 0 3px rgba(192, 132, 252, 0.6),
+    0 0 6px rgba(192, 132, 252, 0.4),
+    0 0 10px rgba(192, 132, 252, 0.2);
+}
+
+.shadow-fight-glow {
+  box-shadow: 
+    0 0 8px rgba(255, 0, 102, 0.2),
+    0 0 15px rgba(255, 0, 102, 0.1),
+    inset 0 0 8px rgba(255, 0, 102, 0.05);
+  border: 1px solid rgba(255, 0, 102, 0.3);
+}
+.shadow-fight-glow:hover {
+  box-shadow: 
+    0 0 12px rgba(255, 0, 102, 0.3),
+    0 0 20px rgba(255, 0, 102, 0.15),
+    inset 0 0 12px rgba(255, 0, 102, 0.1);
+  border-color: rgba(255, 0, 102, 0.6);
+}
+
+.cyan-glow {
+  box-shadow: 
+    0 0 8px rgba(0, 255, 255, 0.2),
+    0 0 15px rgba(0, 255, 255, 0.1),
+    inset 0 0 8px rgba(0, 255, 255, 0.05);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.cyan-glow:hover {
+  box-shadow: 
+    0 0 12px rgba(0, 255, 255, 0.3),
+    0 0 20px rgba(0, 255, 255, 0.15),
+    inset 0 0 12px rgba(0, 255, 255, 0.1);
+  border-color: rgba(0, 255, 255, 0.6);
+}
+
+.yellow-glow {
+  box-shadow: 
+    0 0 8px rgba(255, 255, 0, 0.2),
+    0 0 15px rgba(255, 255, 0, 0.1),
+    inset 0 0 8px rgba(255, 255, 0, 0.05);
+  border: 1px solid rgba(255, 255, 0, 0.3);
+}
+
+.yellow-glow:hover {
+  box-shadow: 
+    0 0 12px rgba(255, 255, 0, 0.3),
+    0 0 20px rgba(255, 255, 0, 0.15),
+    inset 0 0 12px rgba(255, 255, 0, 0.1);
+  border-color: rgba(255, 255, 0, 0.6);
+}
+
+.purple-glow {
+  box-shadow: 
+    0 0 8px rgba(138, 43, 226, 0.2),
+    0 0 15px rgba(138, 43, 226, 0.1),
+    inset 0 0 8px rgba(138, 43, 226, 0.05);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+}
+
+.purple-glow:hover {
+  box-shadow: 
+    0 0 12px rgba(138, 43, 226, 0.3),
+    0 0 20px rgba(138, 43, 226, 0.15),
+    inset 0 0 12px rgba(138, 43, 226, 0.1);
+  border-color: rgba(138, 43, 226, 0.6);
+}
+
+.shadow-fight-title {
+  font-family: 'Orbitron', monospace;
+  font-weight: 900;
+  background: linear-gradient(45deg, #ff0066, #00ffff, #ffff00, #ff0066);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease-in-out infinite;
+  text-shadow: 0 0 20px rgba(255, 0, 102, 0.3);
+  letter-spacing: 0.1em;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.shadow-fight-card {
+  background: linear-gradient(145deg, rgba(10, 10, 10, 0.9), rgba(0, 0, 0, 0.95));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 0, 102, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.combat-button {
+  position: relative;
+  background: linear-gradient(145deg, rgba(20, 20, 20, 0.9), rgba(10, 10, 10, 0.95));
+  border: 2px solid rgba(255, 0, 102, 0.3);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.combat-button::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ff0066, #00ffff, #ffff00, #ff0066);
+  background-size: 400% 400%;
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  animation: gradient-shift 3s ease-in-out infinite;
+  transition: opacity 0.3s ease;
+}
+
+.combat-button:hover::before {
+  opacity: 0.7;
+}
+
+.combat-button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 8px 30px rgba(255, 0, 102, 0.2),
+    0 0 15px rgba(255, 0, 102, 0.15);
+}
+
+
+.floating-particles {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #ff0066;
+  border-radius: 50%;
+  animation: float-particle 6s linear infinite;
+  box-shadow: 0 0 4px rgba(255, 0, 102, 0.6);
+}
+
+.floating-particles:nth-child(2n) {
+  background: #00ffff;
+  box-shadow: 0 0 4px rgba(0, 255, 255, 0.6);
+  animation-delay: -2s;
+  animation-duration: 8s;
+}
+
+.floating-particles:nth-child(3n) {
+  background: #ffff00;
+  box-shadow: 0 0 4px rgba(255, 255, 0, 0.6);
+  animation-delay: -4s;
+  animation-duration: 7s;
+}
+
+@keyframes float-particle {
+  0% {
+    transform: translateY(100vh) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) translateX(100px);
+    opacity: 0;
+  }
+}
