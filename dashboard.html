@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combat Arena - Debate Ladder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="shadow-fight-bg">
+        <!-- Floating Particles -->
+        <div class="floating-particles" style="left: 5%; animation-delay: 0s;"></div>
+        <div class="floating-particles" style="left: 15%; animation-delay: -1s;"></div>
+        <div class="floating-particles" style="left: 25%; animation-delay: -2s;"></div>
+        <div class="floating-particles" style="left: 35%; animation-delay: -3s;"></div>
+        <div class="floating-particles" style="left: 45%; animation-delay: -4s;"></div>
+        <div class="floating-particles" style="left: 55%; animation-delay: -5s;"></div>
+        <div class="floating-particles" style="left: 65%; animation-delay: -1.5s;"></div>
+        <div class="floating-particles" style="left: 75%; animation-delay: -2.5s;"></div>
+        <div class="floating-particles" style="left: 85%; animation-delay: -3.5s;"></div>
+        <div class="floating-particles" style="left: 95%; animation-delay: -4.5s;"></div>
+
+        <header class="dashboard-header">
+            <div class="header-left">
+                <div class="logo-small">⚔️</div>
+                <h1 class="neon-red">DEBATE LADDER</h1>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <div class="user-name">
+                        <div class="label">WARRIOR</div>
+                        <div class="value" id="username">SHADOW FIGHTER</div>
+                    </div>
+                    <div class="xp-counter">
+                        <span class="counter-icon">⚡</span>
+                        <span id="user-xp">1250</span> XP
+                    </div>
+                    <div class="rank-badge">
+                        <span class="badge-icon">🛡️</span>
+                        <span id="user-rank">SHADOW WARRIOR</span>
+                    </div>
+                </div>
+                <a href="hero.html" class="logout-btn">
+                    <span class="logout-icon">🚪</span>
+                    RETREAT
+                </a>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <section class="combat-modes-section">
+                <h2 class="section-title">
+                    CHOOSE YOUR <span class="neon-red">COMBAT</span>
+                </h2>
+                <div class="combat-modes-grid">
+                    <button class="combat-mode-card yellow-glow lightning-effect">
+                        <div class="combat-mode-icon neon-yellow">⚡</div>
+                        <h3 class="neon-yellow">LIGHTNING ROUND</h3>
+                        <p>Strike fast, think faster</p>
+                    </button>
+                    <button class="combat-mode-card shadow-fight-glow lightning-effect">
+                        <div class="combat-mode-icon neon-red">📜</div>
+                        <h3 class="neon-red">CAMPAIGN MODE</h3>
+                        <p>Journey through mastery</p>
+                    </button>
+                    <button class="combat-mode-card cyan-glow lightning-effect">
+                        <div class="combat-mode-icon neon-cyan">⚔️</div>
+                        <h3 class="neon-cyan">DUEL ARENA</h3>
+                        <p>Face the ultimate test</p>
+                    </button>
+                    <button class="combat-mode-card purple-glow lightning-effect">
+                        <div class="combat-mode-icon text-purple-400">🏆</div>
+                        <h3 class="text-purple-400">TOURNAMENT</h3>
+                        <p>Prove your supremacy</p>
+                    </button>
+                </div>
+            </section>
+
+            <section class="achievements-section">
+                <h2 class="section-title">
+                    BATTLE <span class="neon-cyan">HONORS</span>
+                </h2>
+                <div class="achievements-grid">
+                    <div class="achievement-card achievement-shadow shadow-fight-glow earned">
+                        <span class="achievement-icon neon-yellow">⭐</span>
+                        <span class="achievement-name">SHADOW STRIKER</span>
+                    </div>
+                    <div class="achievement-card achievement-shadow shadow-fight-glow earned">
+                        <span class="achievement-icon neon-cyan">🧠</span>
+                        <span class="achievement-name">LOGIC MASTER</span>
+                    </div>
+                    <div class="achievement-card achievement-shadow">
+                        <span class="achievement-icon">⚡</span>
+                        <span class="achievement-name">SPEED DEMON</span>
+                    </div>
+                    <div class="achievement-card achievement-shadow">
+                        <span class="achievement-icon">👑</span>
+                        <span class="achievement-name">GRAND CHAMPION</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="stats-section">
+                <div class="stat-card shadow-fight-card shadow-fight-glow">
+                    <div class="stat-number neon-red">47</div>
+                    <div class="stat-label">VICTORIES</div>
+                </div>
+                <div class="stat-card shadow-fight-card cyan-glow">
+                    <div class="stat-number neon-cyan">12</div>
+                    <div class="stat-label">WIN STREAK</div>
+                </div>
+                <div class="stat-card shadow-fight-card yellow-glow">
+                    <div class="stat-number neon-yellow">89%</div>
+                    <div class="stat-label">DOMINANCE</div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
