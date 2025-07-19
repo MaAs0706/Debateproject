@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Arena - Debate Ladder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="shadow-fight-bg">
+        <!-- Floating Particles -->
+        <div class="floating-particles" style="left: 15%; animation-delay: 0s;"></div>
+        <div class="floating-particles" style="left: 35%; animation-delay: -2s;"></div>
+        <div class="floating-particles" style="left: 55%; animation-delay: -4s;"></div>
+        <div class="floating-particles" style="left: 75%; animation-delay: -1s;"></div>
+        <div class="floating-particles" style="left: 85%; animation-delay: -3s;"></div>
+
+        <a href="hero.html" class="back-button">
+            <span class="back-arrow">←</span>
+            RETURN TO ARENA
+        </a>
+
+        <div class="auth-container">
+            <div class="auth-card shadow-fight-card shadow-fight-glow">
+                <div class="auth-header">
+                    <div class="shield-icon">🛡️</div>
+                    <h2 class="auth-title neon-red" id="auth-title">ENTER ARENA</h2>
+                    <p class="auth-subtitle" id="auth-subtitle">Return to battle</p>
+                </div>
+
+                <div class="auth-toggle">
+                    <button class="toggle-btn active" id="login-btn" onclick="toggleAuth('login')">
+                        <span class="toggle-icon">🔑</span>
+                        LOGIN
+                    </button>
+                    <button class="toggle-btn" id="register-btn" onclick="toggleAuth('register')">
+                        <span class="toggle-icon">👤</span>
+                        REGISTER
+                    </button>
+                </div>
+
+                <form class="auth-form" onsubmit="handleAuth(event)">
+                    <div class="input-group">
+                        <label>WARRIOR NAME</label>
+                        <div class="input-container">
+                            <span class="input-icon">👤</span>
+                            <input type="text" class="shadow-fight-input" placeholder="Enter your warrior name" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group" id="email-group" style="display: none;">
+                        <label>CONTACT SIGNAL</label>
+                        <div class="input-container">
+                            <span class="input-icon">📧</span>
+                            <input type="email" class="shadow-fight-input" placeholder="Enter your contact signal">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>SECRET CODE</label>
+                        <div class="input-container">
+                            <span class="input-icon">🔒</span>
+                            <input type="password" class="shadow-fight-input" placeholder="Enter your secret code" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="combat-button lightning-effect auth-submit">
+                        <span id="submit-text">ENTER COMBAT</span>
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    <span id="footer-text">New warrior?</span>
+                    <button class="auth-switch neon-cyan" id="auth-switch" onclick="toggleAuth('register')">
+                        Join the ranks
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>
