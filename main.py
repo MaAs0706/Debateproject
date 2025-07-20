@@ -1,6 +1,6 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.responses import StreamingResponse
-from fastapi.middleware import Middleware
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import httpx
 from httpx import HTTPStatusError, ConnectTimeout, RequestError
@@ -9,6 +9,14 @@ import asyncio
 
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+    allow_credentials=True,
+)
 
 
 @app.get("/generate/{prompt}")
@@ -27,6 +35,7 @@ async def ai_model(prompt: str):
                 async with client.stream(
                     "POST",
                     "http://localhost:11434/api/generate",
+                    headers={"Accept":"text/event-stream"},
                     json={
                         "model": "gemma:2b",
                         "prompt": prompt,
@@ -36,12 +45,12 @@ async def ai_model(prompt: str):
                     response.raise_for_status()
 
                     async for line in response.aiter_lines():
-                        if not line.strip():
+                        if not line.strip().startswith("{"):
                             continue
                         try:
                             json_chunk = json.loads(line)
                             if 'response' in json_chunk:
-                                yield f"data: {json_chunk['response']}\n\n"
+                                yield f"data: {json_chunk['response'].replace('\n',' ')}\n\n"
                         except json.JSONDecodeError as e:
                             yield f"data: [JSON parsing error: {str(e)}]\n\n"
 
