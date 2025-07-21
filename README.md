@@ -1,34 +1,85 @@
-Directory structure:
-└── stellarcompiler-debateproject/
-    ├── auth.html
-    ├── dashboard.html
-    ├── hero.html
-    ├── main.py
-    ├── response.html
-    └── styles.css
-# 🚀 FastAPI AI Streaming Backend with Ollama Integration
+# 🚀 StellarCompiler Debate Project — FastAPI AI Streaming Backend
 
-This project is a FastAPI backend that integrates with **Ollama** to stream AI-generated responses using `httpx` and `StreamingResponse`. It supports SSE (Server-Sent Events) for real-time token streaming, and is deployable on [Render.com](https://render.com) via GitHub.
+A lightweight FastAPI backend that integrates with **[Ollama](https://ollama.com/)** to stream AI-generated responses in real time using **HTTPX** and **StreamingResponse**. Designed for low-latency interactions with real-time token streaming via **Server-Sent Events (SSE)**, making it perfect for modern web integrations like chat or debate platforms.
 
 ---
 
-## 🧠 Features
+## 🔍 Project Structure
 
-- ✅ FastAPI + HTTPX for asynchronous API
-- ✅ Supports real-time token streaming from Ollama
-- ✅ JSON parsing with error handling
-- ✅ Customizable HTTP timeout settings
-- ✅ CORS enabled for frontend integration
+```
+stellarcompiler-debateproject/
+├── auth.html           # Login/Signup UI
+├── dashboard.html      # Main user dashboard
+├── hero.html           # Landing/hero section
+├── main.py             # FastAPI backend with streaming logic
+├── response.html       # AI response rendering page
+└── styles.css          # Shared CSS for all HTML files
+```
 
 ---
 
-## 📦 Technologies Used
+## ⚙️ Key Features
 
-- [FastAPI](https://fastapi.tiangolo.com/)
-- [Uvicorn](https://www.uvicorn.org/)
-- [HTTPX](https://www.python-httpx.org/)
-- [Ollama](https://ollama.com/) (Locally running AI model)
-- Python 3.10+
-- Javascript
-- Basic CSS
-- HTML 5
+- ⚡ **Real-Time AI Streaming**  
+  Uses Server-Sent Events (SSE) to stream AI tokens as they're generated.
+
+- 🔌 **Ollama Integration**  
+  Works with locally running Ollama models for fast, private inference.
+
+- 🔐 **CORS Enabled**  
+  Fully CORS-enabled for seamless frontend-backend communication.
+
+- 🔄 **Async HTTP with HTTPX**  
+  Efficient async calls to the Ollama API with customizable timeout settings.
+
+- 🧩 **Clean Modular Codebase**  
+  Easy to expand or plug into existing projects.
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology     | Usage                         |
+|----------------|-------------------------------|
+| **FastAPI**    | Web framework for backend      |
+| **Uvicorn**    | ASGI server for FastAPI        |
+| **HTTPX**      | Async HTTP client              |
+| **Ollama**     | Local AI model runner          |
+| **HTML5/CSS3** | Frontend templates + styling   |
+| **JavaScript** | SSE client for live updates    |
+| **Python 3.10+** | Backend logic & integration |
+
+---
+
+## 🌐 Deployment
+
+This project is easily deployable on platforms like [Render.com](https://render.com/) or any service supporting Python + FastAPI.
+
+### 🧪 Local Setup
+
+1. Clone the repository  
+   ```bash
+   git clone https://github.com/your-username/stellarcompiler-debateproject
+   cd stellarcompiler-debateproject
+   ```
+
+2. Install dependencies  
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Run locally with Uvicorn  
+   ```bash
+   uvicorn main:app --reload
+   ```
+
+4. Make sure your **Ollama model** is running locally and accessible.
+
+---
+
+## 🧠 Use Cases
+
+- Live debate simulations  
+- Real-time chat applications  
+- AI-assisted writing or brainstorming  
+- Classroom education tools with instant feedback  
