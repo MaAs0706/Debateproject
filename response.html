@@ -1,50 +1,60 @@
+<!-- response.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Debate Response</title>
-  <link rel="stylesheet" href="response.css" />
+  <link rel="stylesheet" href="response.css">
+  <style>
+    .roadmap-step {
+      margin: 10px 0;
+      padding: 10px;
+      border-left: 5px solid #4CAF50;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+    }
+    .hidden { display: none; }
+  </style>
 </head>
+
 <body>
-  <div class="response-container">
-    <h2 id="modeLabel">Selected Mode: Classic</h2>
+  <div id="main-container">
+    <h1 id="mode-title"></h1>
 
-    <form id="debateForm">
-      <input type="text" id="promptInput" placeholder="Enter your debate prompt..." required />
-      <button type="submit">Submit</button>
-    </form>
+    <div id="classic-mode" class="mode-section hidden">
+      <p>Welcome to the Classic Debate Journey.</p>
+      <button onclick="generateRoadmap()">Generate Roadmap</button>
+      <div id="roadmapDisplay"></div>
+    </div>
 
-    <div id="responseArea">Your AI response will appear here...</div>
+    <div id="lightning-round" class="mode-section hidden">
+      <p>Enter your debate topic:</p>
+      <input type="text" id="lightningTopic" placeholder="e.g., Should AI be regulated?">
+      <div>
+        <label><input type="radio" name="side" value="for"> For the motion</label>
+        <label><input type="radio" name="side" value="against"> Against the motion</label>
+      </div>
+      <button onclick="startLightningDebate()">Start Debate</button>
+      <p id="timer"></p>
+      <div id="aiOpening"></div>
+      <div id="userResponse" contenteditable="true"></div>
+    </div>
+
+    <div id="duel-arena" class="mode-section hidden">
+      <p>Topic: <span id="duelTopic"></span></p>
+      <div id="duelExchange">
+        <div id="aiStatement"></div>
+        <div id="userInput" contenteditable="true"></div>
+        <button onclick="submitUserResponse()">Submit</button>
+      </div>
+    </div>
+
+    <div id="responseOutput"></div>
   </div>
 
-  <script>
-    // Get selected mode from sessionStorage
-    const mode = sessionStorage.getItem("selectedMode") || "classic";
-
-    // Update the body class and label text
-    document.body.classList.add(`mode-${mode}`);
-    document.getElementById("modeLabel").innerText = `Selected Mode: ${mode.replace(/_/g, ' ')}`;
-
-    const form = document.getElementById("debateForm");
-    const input = document.getElementById("promptInput");
-    const responseArea = document.getElementById("responseArea");
-
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const userPrompt = input.value.trim();
-
-      if (!userPrompt) return;
-
-      responseArea.innerText = "Thinking...";
-      
-      // Replace this block with your actual AI call
-      setTimeout(() => {
-        responseArea.innerText = `🔊 AI Response in ${mode.replace(/_/g, ' ')}:\n\nYou said: "${userPrompt}"\n\nThis is a mock response. Integrate your backend here!`;
-      }, 800);
-
-      input.value = "";
-    });
-  </script>
+  <script src="response.js"></script>
 </body>
+
 </html>
