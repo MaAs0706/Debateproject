@@ -1,4 +1,4 @@
-# 🚀 StellarCompiler Debate Project — FastAPI AI Streaming Backend
+#  StellarCompiler Debate Project — FastAPI AI Streaming Backend
 
 A lightweight FastAPI backend that integrates with **[Ollama](https://ollama.com/)** to stream AI-generated responses in real time using **HTTPX** and **StreamingResponse**. Designed for low-latency interactions with real-time token streaming via **Server-Sent Events (SSE)**, making it perfect for modern web integrations like chat or debate platforms.
 
@@ -18,26 +18,26 @@ stellarcompiler-debateproject/
 
 ---
 
-## ⚙️ Key Features
+##  Key Features
 
-- ⚡ **Real-Time AI Streaming**  
+-  **Real-Time AI Streaming**  
   Uses Server-Sent Events (SSE) to stream AI tokens as they're generated.
 
-- 🔌 **Ollama Integration**  
+-  **Ollama Integration**  
   Works with locally running Ollama models for fast, private inference.
 
-- 🔐 **CORS Enabled**  
+-  **CORS Enabled**  
   Fully CORS-enabled for seamless frontend-backend communication.
 
-- 🔄 **Async HTTP with HTTPX**  
+-  **Async HTTP with HTTPX**  
   Efficient async calls to the Ollama API with customizable timeout settings.
 
-- 🧩 **Clean Modular Codebase**  
+-  **Clean Modular Codebase**  
   Easy to expand or plug into existing projects.
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Technology     | Usage                         |
 |----------------|-------------------------------|
@@ -77,7 +77,7 @@ This project is easily deployable on platforms like [Render.com](https://render.
 
 ---
 
-## 🧠 Use Cases
+##  Use Cases
 
 - Live debate simulations  
 - Real-time chat applications  

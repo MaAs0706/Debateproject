@@ -1,88 +1,50 @@
-//AI generated sample HTML code for displaying Streaming JSON token -"Data"
-//Use postman for checking response structure.
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>AI Stream Typing</title>
-  <style>
-    #result {
-      white-space: pre-wrap;
-      font-family: monospace;
-      border: 1px solid #ccc;
-      padding: 1rem;
-      width: 90%;
-      max-width: 600px;
-      height: 300px;
-      overflow-y: auto;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Debate Response</title>
+  <link rel="stylesheet" href="response.css" />
 </head>
 <body>
-  <h2>Ollama AI Stream (Typing Effect)</h2>
-  <input type="text" id="promptInput" placeholder="Enter prompt" style="width:300px;">
-  <button onclick="callAI()">Send</button>
+  <div class="response-container">
+    <h2 id="modeLabel">Selected Mode: Classic</h2>
 
-  <h3>Response:</h3>
-  <div id="result">Waiting...</div>
+    <form id="debateForm">
+      <input type="text" id="promptInput" placeholder="Enter your debate prompt..." required />
+      <button type="submit">Submit</button>
+    </form>
+
+    <div id="responseArea">Your AI response will appear here...</div>
+  </div>
 
   <script>
-    let typingQueue = [];
-    let resultBox;
-    let typingInterval;
-    let eventSource;
+    // Get selected mode from sessionStorage
+    const mode = sessionStorage.getItem("selectedMode") || "classic";
 
-    function typeNextChar() {
-      if (typingQueue.length > 0) {
-        const nextChar = typingQueue.shift();
-        resultBox.textContent += nextChar;
-        resultBox.scrollTop = resultBox.scrollHeight;
-      } else {
-        clearInterval(typingInterval);
-        typingInterval = null;
-      }
-    }
+    // Update the body class and label text
+    document.body.classList.add(`mode-${mode}`);
+    document.getElementById("modeLabel").innerText = `Selected Mode: ${mode.replace(/_/g, ' ')}`;
 
-    function enqueueText(text) {
-      const chars = [...text]; // Correctly handles UTF-8, emojis, etc.
-      typingQueue.push(...chars);
+    const form = document.getElementById("debateForm");
+    const input = document.getElementById("promptInput");
+    const responseArea = document.getElementById("responseArea");
 
-      if (!typingInterval) {
-        typingInterval = setInterval(typeNextChar, 25); // Typing speed
-      }
-    }
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const userPrompt = input.value.trim();
 
-    function callAI() {
-      const prompt = document.getElementById('promptInput').value;
-      resultBox = document.getElementById('result');
-      resultBox.textContent = "";
-      typingQueue = [];
+      if (!userPrompt) return;
 
-      // Close old connection if exists
-      if (eventSource) {
-        eventSource.close();
-      }
+      responseArea.innerText = "Thinking...";
+      
+      // Replace this block with your actual AI call
+      setTimeout(() => {
+        responseArea.innerText = `🔊 AI Response in ${mode.replace(/_/g, ' ')}:\n\nYou said: "${userPrompt}"\n\nThis is a mock response. Integrate your backend here!`;
+      }, 800);
 
-      eventSource = new EventSource(`http://localhost:8000/generate/${encodeURIComponent(prompt)}`);
-
-      eventSource.onmessage = function (event) {
-        if (event.data && event.data.startsWith("[Error")) {
-          // Print error as-is
-          resultBox.textContent += `\n${event.data}\n`;
-          eventSource.close();
-          return;
-        }
-        enqueueText(event.data);
-      };
-
-      eventSource.onerror = function (err) {
-  // Only print if the stream ended prematurely
-  if (typingQueue.length === 0) {
-    resultBox.textContent += "\n[Stream closed]\n";
-  }
-  eventSource.close();
-      };
-    }
+      input.value = "";
+    });
   </script>
 </body>
 </html>
