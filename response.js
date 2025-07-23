@@ -25,15 +25,8 @@ async function generateRoadmap() {
   roadmapDisplay.innerHTML = "<p>Generating roadmap...</p>";
 
   try {
-    const response = await fetch("http://localhost:11434/api/generate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        model: "llama3",
-        prompt: "Give a detailed 5-step roadmap for preparing for a debate competition as a beginner."
-      })
+    const response = await fetch("/generate_roadmap", {
+      method: "POST"
     });
 
     const reader = response.body.getReader();
@@ -55,7 +48,7 @@ async function generateRoadmap() {
           const json = JSON.parse(line);
           if (json.response) {
             const cleanText = json.response.trim();
-            const stepMatch = cleanText.match(/^\d+\. (.+)/);
+            const stepMatch = cleanText.match(/^\d+\.\s(.+)/); // Matches "1. Step content"
             if (stepMatch) {
               const step = stepMatch[1];
               const stepElement = document.createElement("div");
