@@ -268,3 +268,107 @@ body.mode-tournament {
     opacity: 0;
   }
 }
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+#lightning-round {
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(145deg, #1a1a2e, #16213e);
+  color: #f1f1f1;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 750px;
+  margin: 60px auto;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.1), 0 0 60px rgba(0, 255, 255, 0.05);
+  border: 2px solid rgba(0, 255, 255, 0.2);
+  transition: 0.3s ease;
+}
+
+#lightning-round p {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #00ffff;
+}
+
+#lightning-round input[type="text"] {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #00ffff55;
+  border-radius: 12px;
+  background-color: #10122a;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  margin-bottom: 25px;
+  transition: 0.3s ease;
+}
+
+#lightning-round input[type="text"]:focus {
+  border-color: #00ffff;
+  box-shadow: 0 0 8px #00ffff88;
+}
+
+#lightning-round div {
+  margin-bottom: 20px;
+}
+
+#lightning-round label {
+  margin-right: 25px;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+#lightning-round input[type="radio"] {
+  margin-right: 8px;
+  transform: scale(1.2);
+}
+
+#lightning-round button {
+  background-color: #00ffff;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 0 10px #00ffffaa, 0 0 20px #00ffff33;
+}
+
+#lightning-round button:hover {
+  background-color: #0ff;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00ffffcc, 0 0 25px #00ffff55;
+}
+
+#timer {
+  font-weight: bold;
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #ff00ff;
+  text-shadow: 0 0 5px #ff00ffaa;
+}
+
+#aiOpening {
+  background-color: #131535;
+  padding: 18px;
+  border-radius: 12px;
+  margin-top: 25px;
+  white-space: pre-wrap;
+  border-left: 5px solid #00ffffaa;
+  box-shadow: inset 0 0 10px #00ffff22;
+}
+
+#userResponse {
+  background-color: #1a1c3a;
+  padding: 18px;
+  border-radius: 12px;
+  min-height: 140px;
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #fff;
+  outline: none;
+  border: 1px dashed #00ffff55;
+  box-shadow: inset 0 0 8px #00ffff33;
+}
