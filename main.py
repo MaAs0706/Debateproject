@@ -4,6 +4,10 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import ollama
+from typing import Optional
+#global memory
+ai_side: str = None
+Context_topic:str = None
 
 app = FastAPI()
 
@@ -17,9 +21,9 @@ app.add_middleware(CORSMiddleware,
 #app.mount("/", StaticFiles(directory=".", html=True), name="static")
 
 class DebateRequest(BaseModel):
-    topic: str
+    topic: str = None
     side: str = None
-    user: str = "Kuttan"
+    userMsg: str = None
 
 @app.post("/generate-roadmap")
 async def generate_roadmap():
@@ -37,6 +41,7 @@ async def lightning_debate(req: DebateRequest):
 
 @app.post("/duel-start")
 async def duel_start(req: DebateRequest):
+    Context_topic=req.topic
     ai_side= "against" if req.side =="for" else "for"
     prompt = f"1. Welcome the user to the debate session(under 20 words),2.Start a heated but logical debate about: {req.topic} take side: {ai_side}"
     response = ollama.chat(model="gemma:2b", messages=[{"role": "user", "content": prompt}])
@@ -44,6 +49,6 @@ async def duel_start(req: DebateRequest):
 
 @app.post("/duel-reply")
 async def duel_reply(req: DebateRequest):
-    prompt = f"Respond to the user's argument: '{req.user}' with a counterpoint."
+    prompt = f"Context:{Context_topic}, Direct Respond to the user's argument with a valid counterpoint under 5 points :\n\n{req.userMsg} take side{ai_side}"
     response = ollama.chat(model="gemma:2b", messages=[{"role": "user", "content": prompt}])
     return {"reply": response['message']['content']}
