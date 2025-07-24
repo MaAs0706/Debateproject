@@ -3,15 +3,15 @@ document.querySelectorAll(".combat-mode-card").forEach(button => {
         const modeLabel = button.querySelector("h3")?.innerText.trim().toLowerCase();
 
         let selectedMode = "classic";
-        if (modeLabel?.includes("lightning")) selectedMode = "lightning_round";
-        else if (modeLabel?.includes("campaign")) selectedMode = "campaign_mode";
-        else if (modeLabel?.includes("duel")) selectedMode = "duel_arena";
+        if (modeLabel?.includes("lightning")) selectedMode = "lightning";
+        else if (modeLabel?.includes("campaign")) selectedMode = "campaign";
+        else if (modeLabel?.includes("duel")) selectedMode = "duel";
         else if (modeLabel?.includes("tournament")) selectedMode = "tournament";
 
-        // Store selected mode in session storage
+        // Optional: Store in sessionStorage if needed later
         sessionStorage.setItem("selectedMode", selectedMode);
 
-        // Redirect to the AI interface
-        window.location.href = "response.html";
+        // Redirect with query param
+        window.location.href = `response.html?mode=${selectedMode}`;
     });
 });

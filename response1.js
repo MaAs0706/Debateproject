@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const lightningSection = document.getElementById("lightning-round");
   const duelSection = document.getElementById("duel-arena");
 
-  if (mode === "classic") {
-    modeTitle.innerText = "Classic Mode";
+  if (mode === "campaign") {
+    modeTitle.innerText = "campaign Mode";
     classicSection.classList.remove("hidden");
   } else if (mode === "lightning") {
     modeTitle.innerText = "Lightning Round";
@@ -96,3 +96,7 @@ async function SubmitUserResponse(){
     aiStatementDiv.innerText = "❌ Failed to start debate. Try again later.";
   }
 }
+document.getElementById("aiStatement").innerHTML += `
+  <p><span class="ai-prefix">AI:</span> <span class="ai-message">${aiText}</span></p>
+  <p><span class="user-prefix">You:</span> <span class="user-message">${userText}</span></p>
+`;
