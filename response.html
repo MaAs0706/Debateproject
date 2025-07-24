@@ -25,7 +25,7 @@
 
     <div id="classic-mode" class="mode-section hidden">
       <p>Welcome to the Classic Debate Journey.</p>
-      <button onclick="generateRoadmap()">Generate Roadmap</button>
+      <button onclick="generateRoadmap()" id="Generatebutton">Generate Roadmap</button>
       <div id="roadmapDisplay"></div>
     </div>
 
@@ -43,18 +43,28 @@
     </div>
 
     <div id="duel-arena" class="mode-section hidden">
-      <p>Topic: <span id="duelTopic"></span></p>
+      <p>Topic:
+        <input type="text" id="duelTopic" placeholder="Enter Topic">
+      </p>
+      <p>
+        Choose your side:
+        <select id="debateSide">
+          <option value="for">For</option>
+          <option value="Against">Against</option>
+        </select>
+      </p>
+
       <div id="duelExchange">
         <div id="aiStatement"></div>
         <div id="userInput" contenteditable="true"></div>
-        <button onclick="submitUserResponse()">Submit</button>
+        <button onclick="SubmitUserResponse()">Submit</button>
       </div>
     </div>
 
     <div id="responseOutput"></div>
   </div>
 
-  <script src="response.js"></script>
+  <script src="response1.js"></script>
 </body>
 
 </html>
