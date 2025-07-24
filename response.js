@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ---------- Classic Mode: Generate Roadmap ----------
 async function generateRoadmap() {
+  document.getElementById('Generatebutton')
   const roadmapDisplay = document.getElementById("roadmapDisplay");
   roadmapDisplay.innerHTML = "<p>Generating roadmap...</p>";
 
