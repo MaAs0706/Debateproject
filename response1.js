@@ -55,17 +55,15 @@ async function generateRoadmap() {
   }
 }
 
-function stripMarkdown(text) {
-  return text
-    .replace(/[*_`#>~\-]+/g, "")
-    .replace(/\[(.*?)\]\(.*?\)/g, "$1")
-    .trim();
-}
-
-async function SubmitUserResponse(){
-    const topicInput = document.getElementById("duelTopic").value.trim();
-    const debateSide = document.getElementById("debateSide").value;
+//------------Duel Start Operation--------------
+async function SubmitUserResponse() {
+  const topicInput = document.getElementById("topicInput").value.trim();
+  const debateSide = document.getElementById("debateSide").value;
   const aiStatementDiv = document.getElementById("aiStatement");
+  const chatBox = document.getElementById("chatBox");
+  const chatLog = document.getElementById("chatLog");
+  console.log(document.getElementById("duel-arena"));
+
 
   if (!topicInput) {
     aiStatementDiv.innerText = "⚠️ Please enter a topic to start the debate.";
@@ -79,24 +77,89 @@ async function SubmitUserResponse(){
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         topic: topicInput,
         side: debateSide
-        })
+      })
     });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
+    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
 
     const data = await response.json();
-     aiStatementDiv.innerText = `🧠 AI (${debateSide === "for" ? "Against" : "For"}): ${stripMarkdown(data.statement)}`;
+    const initialAIReply = stripMarkdown(data.statement);
+
+
+    aiStatementDiv.innerHTML = `🧠 AI (${debateSide === "for" ? "Against" : "For"}): ${initialAIReply}`;
+    document.getElementById("duel-arena").classList.add("hidden");
+    chatBox.classList.remove("hidden");
+    chatLog.innerHTML = `<div><strong>AI:</strong> ${initialAIReply}</div>`;
   } catch (error) {
     console.error("Error starting duel:", error);
     aiStatementDiv.innerText = "❌ Failed to start debate. Try again later.";
   }
 }
-document.getElementById("aiStatement").innerHTML += `
-  <p><span class="ai-prefix">AI:</span> <span class="ai-message">${aiText}</span></p>
-  <p><span class="user-prefix">You:</span> <span class="user-message">${userText}</span></p>
-`;
+
+//---------------Duel Reply Operation----------------
+async function sendUserReply() {
+  const userMsg = document.getElementById("userMessageInput").value.trim();
+  const chatLog = document.getElementById("chatLog");
+
+  if (!userMsg) return;
+
+  // Append user message
+  chatLog.innerHTML += `<div><strong>You:</strong> ${userMsg}</div>`;
+  document.getElementById("userMessageInput").value = "";
+
+  // 🧠 Show AI is thinking...
+  const thinkingId = `thinking-${Date.now()}`;
+  chatLog.innerHTML += `<div id="${thinkingId}"><em>🧠 AI is thinking...</em></div>`;
+  chatLog.scrollTop = chatLog.scrollHeight;
+
+  try {
+    const response = await fetch("http://localhost:8000/duel-reply", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+            topic: "",
+            side: "", 
+            userMsg: userMsg 
+        })
+    });
+
+    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
+    const data = await response.json();
+    const aiReply = stripMarkdown(data.reply);
+
+    // Replace "thinking" with actual AI response
+    const thinkingElement = document.getElementById(thinkingId);
+    if (thinkingElement) {
+      thinkingElement.innerHTML = `<strong>AI:</strong> ${aiReply}`;
+    } else {
+      chatLog.innerHTML += `<div><strong>AI:</strong> ${aiReply}</div>`;
+    }
+
+    chatLog.scrollTop = chatLog.scrollHeight;
+  } catch (error) {
+    console.error("Error replying to duel:", error);
+
+    // Replace or add error message
+    const thinkingElement = document.getElementById(thinkingId);
+    if (thinkingElement) {
+      thinkingElement.innerHTML = `<strong>System:</strong> ❌ Failed to respond. Try again later.`;
+    } else {
+      chatLog.innerHTML += `<div><strong>System:</strong> ❌ Failed to respond. Try again later.</div>`;
+    }
+  }
+}
+
+function stripMarkdown(text) {
+  return text
+    .replace(/[*_~`#>]/g, "")
+    .replace(/\[(.*?)\]\(.*?\)/g, "$1")
+    .replace(/!\[(.*?)\]\(.*?\)/g, "")
+    .replace(/-{3,}/g, "")         
+    .trim();
+}

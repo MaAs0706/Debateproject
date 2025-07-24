@@ -59,24 +59,33 @@
 
 
     <div id="duel-arena" class="mode-section hidden">
-  <div class="duel-card">
-    <h2>Duel Arena</h2>
+  <p>
+    Topic:
+    <input type="text" id="topicInput" placeholder="Enter Topic">
+  </p>
 
-    <label for="duelTopic">Topic:</label>
-    <input type="text" id="duelTopic" placeholder="Enter Topic">
-
-    <label for="debateSide">Choose your side:</label>
+  <p>
+    Choose your side:
     <select id="debateSide">
       <option value="for">For</option>
-      <option value="against">Against</option>
+      <option value="Against">Against</option>
     </select>
+  </p>
 
+  <div id="duelExchange">
     <div id="aiStatement"></div>
-
-    <label for="userInput">Your Response:</label>
-    <div id="userInput" contenteditable="true" class="response-box"></div>
-
+    <div id="userInput" contenteditable="true"></div>
     <button onclick="SubmitUserResponse()">Submit</button>
+  </div>
+</div>
+
+<!-- Chat Interface -->
+<div id="chatBox" class="hidden">
+  <div id="chatLog" style="border: 1px solid #ccc; padding: 10px; max-height: 300px; overflow-y: auto;"></div>
+
+  <div style="margin-top: 10px;">
+    <input type="text" id="userMessageInput" placeholder="Your Argument..." style="width: 80%;">
+    <button onclick="sendUserReply()">Send</button>
   </div>
 </div>
     <div id="responseOutput"></div>
