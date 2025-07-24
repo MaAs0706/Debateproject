@@ -22,6 +22,16 @@
 </head>
 
 <body>
+        <div class="floating-particles" style="left: 5%; animation-delay: 0s;"></div>
+        <div class="floating-particles" style="left: 15%; animation-delay: -1s;"></div>
+        <div class="floating-particles" style="left: 25%; animation-delay: -2s;"></div>
+        <div class="floating-particles" style="left: 35%; animation-delay: -3s;"></div>
+        <div class="floating-particles" style="left: 45%; animation-delay: -4s;"></div>
+        <div class="floating-particles" style="left: 55%; animation-delay: -5s;"></div>
+        <div class="floating-particles" style="left: 65%; animation-delay: -1.5s;"></div>
+        <div class="floating-particles" style="left: 75%; animation-delay: -2.5s;"></div>
+        <div class="floating-particles" style="left: 85%; animation-delay: -3.5s;"></div>
+        <div class="floating-particles" style="left: 95%; animation-delay: -4.5s;"></div>
   <div id="main-container">
     <h1 id="mode-title"></h1>
 
@@ -31,18 +41,22 @@
       <div id="roadmapDisplay"></div>
     </div>
 
-    <div id="lightning-round" class="mode-section hidden">
-      <p>Enter your debate topic:</p>
-      <input type="text" id="lightningTopic" placeholder="e.g., Should AI be regulated?">
-      <div>
-        <label><input type="radio" name="side" value="for"> For the motion</label>
-        <label><input type="radio" name="side" value="against"> Against the motion</label>
-      </div>
-      <button onclick="startLightningDebate()">Start Debate</button>
-      <p id="timer"></p>
-      <div id="aiOpening"></div>
-      <div id="userResponse" contenteditable="true"></div>
-    </div>
+    <div id="lightning-round" class="mode-section hidden better-lightning-card">
+  <p class="section-label">Enter your debate topic:</p>
+  <input type="text" id="lightningTopic" class="styled-input" placeholder="e.g., Should AI be regulated?">
+
+  <div class="radio-group">
+    <label><input type="radio" name="side" value="for"> For the motion</label>
+    <label><input type="radio" name="side" value="against"> Against the motion</label>
+  </div>
+
+  <button class="styled-button" onclick="startLightningDebate()">Start Debate</button>
+
+  <p id="timer" class="timer-display"></p>
+  <div id="aiOpening" class="styled-response"></div>
+  <div id="userResponse" class="styled-editable" contenteditable="true"></div>
+</div>
+
 
     <div id="duel-arena" class="mode-section hidden">
   <div class="duel-card">
