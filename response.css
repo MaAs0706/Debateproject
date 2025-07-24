@@ -389,3 +389,83 @@ body.mode-tournament {
   border: 1px dashed #00ffff55;
   box-shadow: inset 0 0 8px #00ffff33;
 }
+/* Container for chat box */
+#chatBox {
+  background-color: #121212;
+  border: 2px solid #00f0ff;
+  border-radius: 15px;
+  padding: 20px;
+  width: 500px;
+  margin: 30px auto;
+  box-shadow: 0 0 20px #00f0ff;
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Chat log area */
+#chatLog {
+  background-color: #1e1e1e;
+  border: 2px solid #00f0ff;
+  padding: 15px;
+  max-height: 300px;
+  overflow-y: auto;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 15px;
+}
+
+/* Input + Button container */
+#chatBox input[type="text"] {
+  width: 75%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #00f0ff;
+  background-color: #1e1e1e;
+  color: white;
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s;
+}
+
+#chatBox input[type="text"]:focus {
+  border-color: #00aaff;
+  box-shadow: 0 0 10px #00aaff;
+}
+
+#chatBox button {
+  width: 20%;
+  padding: 10px;
+  background-color: #008CFF;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 15px;
+  margin-left: 5px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #008CFF;
+  transition: 0.2s;
+}
+
+#chatBox button:hover {
+  background-color: #00aaff;
+  box-shadow: 0 0 15px #00aaff;
+}
+
+/* Response output styling */
+#responseOutput {
+  margin-top: 25px;
+  padding: 20px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: 2px solid #00f0ff;
+  border-radius: 10px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 15px #00f0ff;
+  font-family: 'Orbitron', sans-serif;
+}
