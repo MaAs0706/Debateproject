@@ -219,14 +219,12 @@ body {
   animation-delay: -2s;
   animation-duration: 8s;
 }
-
 .floating-particles:nth-child(3n) {
   background: #ffff00;
   box-shadow: 0 0 4px rgba(255, 255, 0, 0.6);
   animation-delay: -4s;
   animation-duration: 7s;
 }
-
 @keyframes float-particle {
   0% {
     transform: translateY(100vh) translateX(0px);
